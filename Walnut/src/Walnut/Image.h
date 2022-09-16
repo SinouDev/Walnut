@@ -4,6 +4,8 @@
 
 #include "vulkan/vulkan.h"
 
+#include <memory>
+
 namespace Walnut {
 
 	enum class ImageFormat
@@ -16,6 +18,7 @@ namespace Walnut {
 	class Image
 	{
 	public:
+		Image() = default;
 		Image(std::string_view path);
 		Image(uint32_t width, uint32_t height, ImageFormat format, const void* data = nullptr);
 		~Image();
@@ -28,11 +31,19 @@ namespace Walnut {
 
 		uint32_t GetWidth() const { return m_Width; }
 		uint32_t GetHeight() const { return m_Height; }
+
+		uint8_t* GetData() const { return m_Data; }
+
+		void Copy(std::shared_ptr<Image>& image);
+
+		ImageFormat GetFormat() const { return m_Format; }
 	private:
 		void AllocateMemory(uint64_t size);
 		void Release();
 	private:
 		uint32_t m_Width = 0, m_Height = 0;
+
+		uint8_t* m_Data = nullptr;
 
 		VkImage m_Image = nullptr;
 		VkImageView m_ImageView = nullptr;

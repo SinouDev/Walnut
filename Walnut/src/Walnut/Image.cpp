@@ -84,6 +84,17 @@ namespace Walnut {
 		Release();
 	}
 
+	void Image::Copy(std::shared_ptr<Image>& image)
+	{
+		//if (!this)
+			//return;
+		size_t size = image->m_Width * image->m_Height * Utils::BytesPerPixel(image->m_Format);
+		m_Data = new uint8_t[size];
+		memcpy(m_Data, image->m_Data, size);
+		AllocateMemory(size);
+		SetData(m_Data);
+	}
+
 	void Image::AllocateMemory(uint64_t size)
 	{
 		VkDevice device = Application::GetDevice();
@@ -271,6 +282,7 @@ namespace Walnut {
 
 			Application::FlushCommandBuffer(command_buffer);
 		}
+		m_Data = (uint8_t*)data;
 	}
 
 	void Image::Resize(uint32_t width, uint32_t height)

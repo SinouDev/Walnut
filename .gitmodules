@@ -1,0 +1,13 @@
+[submodule "vendor/ImGui"]
+	path = vendor/ImGui
+	url = https://github.com/SinouDev/imgui.git
+	branch = docking
+[submodule "vendor/GLFW"]
+	path = vendor/GLFW
+	url = https://github.com/SinouDev/glfw.git
+[submodule "vendor/glm"]
+	path = vendor/glm
+	url = https://github.com/SinouDev/glm.git
+[submodule "vendor/stb_image"]
+	path = vendor/stb_image
+	url = https://github.com/nothings/stb.git
