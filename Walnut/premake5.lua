@@ -15,6 +15,8 @@ project "Walnut"
       "../vendor/glfw/include",
       "../vendor/stb_image",
 
+      "$(CUDA_PATH)/include",
+
       "%{IncludeDir.VulkanSDK}",
       "%{IncludeDir.glm}",
    }
@@ -23,6 +25,8 @@ project "Walnut"
    {
        "ImGui",
        "GLFW",
+
+       "$(CUDA_PATH)/lib/x64/cudart_static.lib",
 
        "%{Library.Vulkan}",
    }
@@ -35,18 +39,18 @@ project "Walnut"
       defines { "WL_PLATFORM_WINDOWS" }
 
    filter "configurations:Debug"
-      defines { "WL_DEBUG" }
+      defines { "WL_DEBUG", "_DEBUG" }
       runtime "Debug"
       symbols "On"
 
    filter "configurations:Release"
-      defines { "WL_RELEASE" }
+      defines { "WL_RELEASE", "NDEBUG" }
       runtime "Release"
-      optimize "On"
+      optimize "Speed"
       symbols "On"
 
    filter "configurations:Dist"
-      defines { "WL_DIST" }
+      defines { "WL_DIST", "NDEBUG" }
       runtime "Release"
-      optimize "On"
+      optimize "Speed"
       symbols "Off"
