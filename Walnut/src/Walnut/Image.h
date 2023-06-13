@@ -19,7 +19,7 @@ namespace Walnut {
 	{
 	public:
 		Image() = default;
-//		Image(std::string_view path);
+		Image(std::string_view path);
 		Image(uint32_t width, uint32_t height, ImageFormat format, const void* data = nullptr);
 		~Image();
 

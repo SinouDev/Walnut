@@ -64,7 +64,7 @@ namespace Walnut {
 		}
 
 	}
-#if 0
+
 	Image::Image(std::string_view path)
 		: m_Filepath(path)
 	{
@@ -88,7 +88,7 @@ namespace Walnut {
 		AllocateMemory(m_Width * m_Height * Utils::BytesPerPixel(m_Format));
 		SetData(data);
 	}
-#endif
+
 	Image::Image(uint32_t width, uint32_t height, ImageFormat format, const void* data)
 		: m_Width(width), m_Height(height), m_Format(format)
 	{
