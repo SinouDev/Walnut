@@ -65,7 +65,7 @@ namespace Walnut {
 
 	}
 
-	Image::Image(std::string_view path)
+	Image::Image(const std::string& path)
 		: m_Filepath(path)
 	{
 		int width, height, channels;
